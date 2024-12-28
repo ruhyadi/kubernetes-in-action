@@ -43,3 +43,30 @@ minikube status
 ```bash
 minikube stop
 ```
+
+## Running Kubia
+
+Kubia is a simple web application written in javascript that listens on port 8080 and returns the hostname of the container it is running in. It is used to demonstrate how to deploy an application to Kubernetes.
+
+To run Kubia, you can use the following command:
+
+```bash
+kubectl apply -f Chapter02/kubia.yaml
+```
+
+Expose the service:
+
+```bash
+kubectl expose rc kubia --type=LoadBalancer --name kubia-http
+```
+
+Get the URL of the service:
+
+```bash
+minikube service kubia-http --url
+
+# output
+http://192.168.49.2:31877
+```
+
+You can now access the service by visiting the URL in your browser.
