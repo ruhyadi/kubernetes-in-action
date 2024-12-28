@@ -69,4 +69,37 @@ minikube service kubia-http --url
 http://192.168.49.2:31877
 ```
 
-You can now access the service by visiting the URL in your browser.
+You can now access the service by visiting the URL in your browser. Or by running the following command:
+
+```bash
+curl http://192.168.49.2:31877
+```
+
+You can also scale the application by running the following command:
+
+```bash
+kubectl scale rc kubia --replicas=3
+```
+
+You check the status of the pods by running:
+
+```bash
+kubectl get pods
+```
+
+You can verify that the pods are running by visiting the URL in your browser.
+
+## Cleaning Up
+
+To delete the service and the pods, you can run the following command:
+
+```bash
+kubectl delete service kubia-http
+kubectl delete rc kubia
+```
+
+To stop Minikube, you can run the following command:
+
+```bash
+minikube stop
+```
